@@ -84,7 +84,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - ROS 2 community for their continuous support and development.
 - Tutorials and documentation available online for ROS 2 and behavior trees.
 
-```
 
 ### Instructions for Creating the `README.md`
 
