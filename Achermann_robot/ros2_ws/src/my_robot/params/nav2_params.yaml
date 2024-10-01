@@ -1,0 +1,17 @@
+planner_server:
+  ros__parameters:
+    planner_plugins: ["GridBased", "AStarPlanner"]
+    use_sim_time: True
+    GridBased:
+      plugin: "nav2_navfn_planner/NavfnPlanner"
+    AStarPlanner:
+      plugin: "nav2_theta_star_planner/ThetaStarPlanner"
+    
+controller_server:
+  ros__parameters:
+    controller_plugins: ["DWB", "PID"]
+    use_sim_time: True
+    DWB:
+      plugin: "dwb_core::DWBLocalPlanner"
+    PID:
+      plugin: "nav2_pid_controller/PIDController"

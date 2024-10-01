@@ -1,0 +1,15 @@
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <!-- The blackboard is where we share variables between nodes -->
+    <Blackboard>
+      <Set name="goal" value="1;1;0.0"/> <!-- Set the navigation goal -->
+    </Blackboard>
+
+    <!-- Navigate to the specified goal using the 'NavigateToPose' action -->
+    <Sequence name="Navigate to a Goal">
+      <NavigateToPose goal="${goal}" />
+      <LogInfo message="Navigation complete" />
+    </Sequence>
+
+  </BehaviorTree>
+</root>
