@@ -1,5 +1,4 @@
 
-```markdown
 # Ackermann Robot Project
 
 ## Overview
