@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<robot name="my_robot">
+<robot name="ackermann_robot">
 
     <!-- Base Link -->
     <link name="base_link">
         <visual>
             <geometry>
-                <box size="0.5 0.5 0.5" />
+                <box size="0.6 0.4 0.1" /> <!-- Adjusted size for a longer base -->
             </geometry>
         </visual>
     </link>
 
-    <!-- Wheel Link -->
-    <link name="wheel">
+    <!-- Wheel Links -->
+    <link name="front_left_wheel">
         <visual>
             <geometry>
                 <cylinder radius="0.1" length="0.05"/>
@@ -19,11 +19,56 @@
         </visual>
     </link>
 
-    <!-- Joint between Base and Wheel -->
-    <joint name="base_to_wheel" type="fixed">
+    <link name="front_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="rear_left_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <link name="rear_right_wheel">
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <!-- Joint for Rear Wheels -->
+    <joint name="base_to_rear_left_wheel" type="fixed">
         <parent link="base_link"/>
-        <child link="wheel"/>
-        <origin xyz="0 0 -0.25" rpy="0 0 0"/> <!-- Adjust position as needed -->
+        <child link="rear_left_wheel"/>
+        <origin xyz="-0.25 -0.15 -0.05" rpy="0 0 0"/> <!-- Position of rear left wheel -->
+    </joint>
+
+    <joint name="base_to_rear_right_wheel" type="fixed">
+        <parent link="base_link"/>
+        <child link="rear_right_wheel"/>
+        <origin xyz="-0.25 0.15 -0.05" rpy="0 0 0"/> <!-- Position of rear right wheel -->
+    </joint>
+
+    <!-- Joint for Front Wheels (Steering) -->
+    <joint name="base_to_front_left_wheel" type="revolute">
+        <parent link="base_link"/>
+        <child link="front_left_wheel"/>
+        <origin xyz="0.25 -0.15 -0.05" rpy="0 0 0"/> <!-- Position of front left wheel -->
+        <axis xyz="0 0 1"/> <!-- Rotation axis -->
+    </joint>
+
+    <joint name="base_to_front_right_wheel" type="revolute">
+        <parent link="base_link"/>
+        <child link="front_right_wheel"/>
+        <origin xyz="0.25 0.15 -0.05" rpy="0 0 0"/> <!-- Position of front right wheel -->
+        <axis xyz="0 0 1"/> <!-- Rotation axis -->
     </joint>
 
     <!-- LIDAR Link -->
@@ -43,3 +88,4 @@
     </joint>
 
 </robot>
+
